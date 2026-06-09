@@ -6,14 +6,13 @@ if %errorlevel% NEQ 0 (
     exit /b
 )
 
-set "z2folder=C:\Program Files\zrok2"
 set "downloads=%userprofile%\downloads"
 
-::Backs up varibles
+winget list --id 7zip.7zip >nul 2>nul || winget install -e --id 7zip.7zip
+
 if not exist %downloads%\!backup mkdir %downloads%\!backup
 cd %downloads%\!backup
 if not exist BACKUP.txt echo %Path% >BACKUP.txt
 cd %downloads%
 
-::Set varibles
 powershell -NoProfile -Command "[Environment]::SetEnvironmentVariable('Path', [Environment]::GetEnvironmentVariable('Path', 'Machine') + ';C:\Program Files\7-Zip\', 'Machine')"
