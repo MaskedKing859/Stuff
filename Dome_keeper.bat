@@ -6,6 +6,8 @@ set "Archive=%~dp0Dome-Keeper-SteamRIP.com.rar"
 set "Output=%~dp0"
 set "Onlinefix=%~dp0Dome Keeper"
 
+winget list --id JernejSimoncic.Wget >nul 2>nul || winget install -e --id JernejSimoncic.Wget
+
 if not exist "%Output%" mkdir "%Output%"
 
 7z x "%Archive%" "-o%Output%" -y
